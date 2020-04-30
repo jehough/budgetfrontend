@@ -1,4 +1,4 @@
-import {path} from '../helpers.js';
+import {path} from '../../helpers.js';
 
 export const login = (object) => {
     

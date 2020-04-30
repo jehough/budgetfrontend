@@ -4,7 +4,7 @@ import LoginForm from '../components/login_form'
 import Button from 'react-bootstrap/Button'
 import {Redirect} from 'react-router-dom'
 import {makeObject} from '../functions/functions.js'
-import {login} from '../../ducks/user/actions.js'
+import {login} from '../../ducks/users/actions.js'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 

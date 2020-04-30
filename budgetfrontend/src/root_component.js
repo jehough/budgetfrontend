@@ -5,7 +5,8 @@ import {
     Route
 } from 'react-router-dom';
 import Login from './views/containers/login';
-import Home from './views/components/home'
+import Home from './views/components/home';
+import Register from './views/containers/register';
 
 
 export default class RootComponent extends Component{
