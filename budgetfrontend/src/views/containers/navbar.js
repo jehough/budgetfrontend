@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import SearchBar from '../components/search_bar';
 import NavButton from '../components/nav_button';
-import {logout} from '../../ducks/user/actions'
+import {logout} from '../../ducks/users/actions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
@@ -13,7 +12,7 @@ import {Link, withRouter} from 'react-router-dom';
 
   render(){
     return(<Navbar variant="light" expand="lg" sticky="top">
-          <Navbar.Brand><Link to="/">Little Ocean Shop</Link></Navbar.Brand>
+          <Navbar.Brand><Link to="/">MyBudget 2.0</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -30,8 +29,6 @@ import {Link, withRouter} from 'react-router-dom';
 }
 const mapStateToProps = state => {
   return {
-  items: state.cart.items,
-  price: state.cart.price,
   signed_in: state.user.signed_in
 }}
 const mapDispatchToProps = dispatch => bindActionCreators({logout}, dispatch)
