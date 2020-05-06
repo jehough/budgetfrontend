@@ -22,7 +22,7 @@ class Register extends Component {
       {this.props.signed_in ? <Redirect to="/" />:null}
       <DisplayTitle title="New User" />
       {this.props.message === '' ? <p>{this.props.message}</p>:null}
-      <LoginForm handleSubmit={this.handleSubmit} register={true}/>
+      <LoginForm handleSubmit={this.handleSubmit} newUser={true}/>
     </div>)
   }
 }
