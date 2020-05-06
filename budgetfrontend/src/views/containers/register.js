@@ -15,16 +15,14 @@ class Register extends Component {
                       email: form.email.value,
                       password: form.password.value}
     const object = makeObject("POST", formData)
-    fetch("http://localhost:4000/user", object)
-      .then(resp => resp.json())
-      .then(json => this.props.handleUserResponse(json))
+    this.props.newAccount(object)
   }
   render(){
     return(<div className="form-container">
       {this.props.signed_in ? <Redirect to="/" />:null}
       <DisplayTitle title="New User" />
       {this.props.message === '' ? <p>{this.props.message}</p>:null}
-      <LoginForm handleSubmit={this.handleSubmit}/>
+      <LoginForm handleSubmit={this.handleSubmit} register={true}/>
     </div>)
   }
 }

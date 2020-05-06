@@ -15,6 +15,12 @@ import Button from 'react-bootstrap/Button';
         <Form.Control type="password" name="password" placeholder="Enter Password" />
         </Form.Group>
 
+        {this.props.register ?
+        <Form.Group controlId="confirmPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Coontrol type="password" name="confirmPassword" placeholder="Confirm Password" />
+        </Form.Group>: null }
+        
         <Button variant="info" type="submit">Log In</Button>
 
       </form>
