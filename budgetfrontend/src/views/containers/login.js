@@ -31,7 +31,7 @@ class Login extends Component {
   }
   render(){
     return(<div>
-      {this.props.signed_in ? <Redirect to="/" />:null}
+      {this.props.signed_in ? <Redirect to="/budgets" />:null}
       {this.state.newuser? <Redirect to="/register"/>:null}
       <DisplayTitle title="Login Page" />
       <h4>You must login to view your cart.</h4>

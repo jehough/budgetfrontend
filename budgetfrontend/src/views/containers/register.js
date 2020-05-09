@@ -19,7 +19,7 @@ class Register extends Component {
   }
   render(){
     return(<div className="form-container">
-      {this.props.signed_in ? <Redirect to="/" />:null}
+      {this.props.signed_in ? <Redirect to="/budgets" />:null}
       <DisplayTitle title="New User" />
       {this.props.message === '' ? <p>{this.props.message}</p>:null}
       <LoginForm handleSubmit={this.handleSubmit} newUser={true}/>
