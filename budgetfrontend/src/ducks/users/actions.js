@@ -15,10 +15,10 @@ export const login = (object) => {
             message: json.message
           })
         }
-        else if(json.auth_token){
+        else if(json.token){
           dispatch( {
             type: "SIGN IN USER",
-            auth_token: json.auth_token,
+            auth_token: json.token,
             message: ''
           })
         }
@@ -35,16 +35,17 @@ export const login = (object) => {
       fetch(url, object)
       .then(resp => resp.json())
       .then(json => {
+        console.log(json)
         if (json.status === "error"){
           dispatch ({
             type: "UPDATE ERRORS",
             message: json.message
           })
         }
-        else if(json.auth_token){
+        else if(json.token){
           dispatch( {
             type: "SIGN IN USER",
-            auth_token: json.auth_token,
+            auth_token: json.token,
             message: ''
           })
         }
