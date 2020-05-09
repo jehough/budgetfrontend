@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 import BudgetList from '../components/budget_list.js';
 import DisplayTitle from '../components/title.js';
 import {path} from '../../helpers.js';
@@ -8,12 +10,18 @@ class Budgets extends Component {
   constructor(){
     super()
     this.state = {
-      budgetsList: []
+      budgetsList: [],
+      showForm: false
     }
   }
 
+  handleShow = () => {
+    this.setState({showForm: true})
+  }
 
-
+  handleClose = () => {
+    this.setState({showForm: false})
+  }
 
   componentDidMount(){
     const url = path + '/budgets'
@@ -28,7 +36,14 @@ class Budgets extends Component {
     return(<div>
       <DisplayTitle title={"My Budgets"} />
       <BudgetList list={this.state.fishList} input={this.state.input}/>
-      </div>)
+      <Button onClick={this.handleShow}>Add a New Budget</Button>
+      
+      <Modal show = {this.state.showForm} onClick={this.handleClose}>
+        <Modal.Body>
+          
+        </Modal.Body>
+      </Modal>
+      </div>)    
   }
 }
 export default Budgets
