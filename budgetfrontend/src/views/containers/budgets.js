@@ -57,7 +57,6 @@ class Budgets extends Component {
       <DisplayTitle title={"My Budgets"} />
       <BudgetList list={this.state.budgetsList}/>
       <Button onClick={this.handleShow}>Add a New Budget</Button>
-      {console.log(this.state.budgetsList)}
       <Modal show = {this.state.showForm} onHide= {this.handleClose}>
         <Modal.Body>
           <form onSubmit={this.handleSubmit}>
