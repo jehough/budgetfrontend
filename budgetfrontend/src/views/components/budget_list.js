@@ -2,8 +2,7 @@ import React from 'react';
 
 const BudgetList = props => (<div>
       <ul>
-        <li> objects go here</li>
-        <li>and here</li>
+        {props.list.map(obj => <li>{obj.name}: {obj.available}</li>)}
       </ul>
     </div>)
 
