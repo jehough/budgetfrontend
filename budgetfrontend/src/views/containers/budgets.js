@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useReducer} from 'react';
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import BudgetList from '../components/budget_list.js';
@@ -6,7 +6,7 @@ import DisplayTitle from '../components/title.js';
 import Form from 'react-bootstrap/Form';
 import {makeObject} from '../functions/functions.js';
 import {path} from '../../helpers.js';
-
+import {connect} from 'react-redux'
 
 class Budgets extends Component {
   constructor(){
@@ -55,6 +55,7 @@ class Budgets extends Component {
   render(){
     return(<div>
       <DisplayTitle title={"My Budgets"} />
+      {console.log(this.props.userId)}
       <BudgetList list={this.state.budgetsList}/>
       <Button onClick={this.handleShow}>Add a New Budget</Button>
       <Modal show = {this.state.showForm} onHide= {this.handleClose}>
@@ -79,4 +80,11 @@ class Budgets extends Component {
       </div>)    
   }
 }
-export default Budgets
+
+const mapStateToProps = state => {
+  return {
+    token: state.user.auth_token,
+    userId: state.user.userId
+  }
+}
+export default connect(mapStateToProps)(Budgets)
