@@ -8,3 +8,14 @@ export const makeObject = (method, formData) => {
       body: JSON.stringify(formData)
     };
   }
+
+export const makeGetObject = (token) => {
+  return {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Action": "application/json",
+      "Authorization": `${token}`
+    }
+  }
+}
