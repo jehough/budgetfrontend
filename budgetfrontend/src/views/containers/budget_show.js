@@ -31,10 +31,9 @@ class BudgetShow extends Component {
     this.setState({showForm: false})
     const form = e.target
     const formData = {
-      name: form.name.value,
-      available: form.available.value}
+      name: form.name.value}
     const object = makeObject("POST", formData)
-    const url = path + `/users/${this.props.userId}/budgets`
+    const url = path + `/budgets/${this.props.location.state.id}/categories`
     fetch(url, object)
       .then(resp => resp.json())
       .then(json => console.log(json))
@@ -57,6 +56,21 @@ class BudgetShow extends Component {
       {this.props.signed_in? null: <Redirect to="/" />}
       <DisplayTitle title={this.state.budget.name} />
       <p> This is where the budget will go when I am done with this!</p>
+      <Button onClick={this.handleShow}>Add a New Category</Button>
+      <Modal show = {this.state.showForm} onHide= {this.handleClose}>
+        <Modal.Body>
+          <form onSubmit={this.handleSubmit}>
+            <Form.Group controlId="name">
+              <Form.Label>Category Name: </Form.Label>
+              <Form.Control 
+                  type="text" 
+                  name="name" 
+                  placeholder="Type a Category Name Here" />
+            </Form.Group>
+           <Button type="submit">Create Category</Button>
+          </form>
+        </Modal.Body>
+      </Modal>
       </div>)    
   }
 }
