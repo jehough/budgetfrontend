@@ -7,6 +7,7 @@ import {path} from '../../helpers.js';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import AddMoneyForm from './addMoney.js';
+import AddTransactionForm from './addTransaction'
 
 
 class CategoryCard extends Component {
@@ -20,6 +21,13 @@ class CategoryCard extends Component {
     }
   }
   
+  handleTransactionClick = () => {
+      this.setState({showAddTransaction: true})
+  }
+
+  handleTranactionClose = () => {
+      this.setState({showAddTransaction: false})
+  }
   handleAddMoneyClick = () => {
        this.setState({showAddMoney: true})
   }
@@ -34,7 +42,8 @@ class CategoryCard extends Component {
         <Card.Title>{this.props.category.name}</Card.Title>
         <Card.Subtitle>{this.props.category.available}</Card.Subtitle>
         {this.state.showAddMoney ? <AddMoneyForm handleAddMoneyClose={this.handleAddMoneyClose}/>:<Button onClick={this.handleAddMoneyClick}>Add Money</Button>}
-        {this.state.showAddTransaction? }
+        {this.state.showAddTransaction? 
+            <AddTransactionForm handleTranactionClose={this.handleTransactionClose} /> : <Button onClick={this.handleTransactionClick}>Add Transaction</Button>}
         </Card.Body>
     </Card>)    
   }

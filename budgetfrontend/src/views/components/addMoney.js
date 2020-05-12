@@ -5,10 +5,6 @@ import Button from 'react-bootstrap/Button';
 
  const AddMoneyForm = props => (<div className="form">
       <form onSubmit={props.handleSubmit}>
-        <Form.Group controlId="description">
-        <Form.Label>Description</Form.Label>
-        <Form.Control type="text" name="description" placeholder="description" />
-        </Form.Group>
 
         <Form.Group controlId="amount">
         <Form.Label>Amount</Form.Label>
