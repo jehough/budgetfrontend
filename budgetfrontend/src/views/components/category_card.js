@@ -12,6 +12,8 @@ class CategoryCard extends Component {
   constructor(){
     super()
     this.state = {
+      showAddMoney: false,
+      showAddTransaction: false,
       transaction: '',
       amount: 0
     }
