@@ -38,7 +38,11 @@ class Budgets extends Component {
     const url = path + `/users/${this.props.userId}/budgets`
     fetch(url, object)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => {
+        let budgetsList = this.state.budgetsList
+        budgetsList.push(json)
+        this.setState({budgetsList: budgetsList})
+      })
   }
 
   setDisplay = (json) => {

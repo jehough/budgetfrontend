@@ -16,7 +16,6 @@ export const login = (object) => {
           })
         }
         else if(json.token){
-          console.log(json)
           dispatch( {
             type: "SIGN IN USER",
             userId: json._id,

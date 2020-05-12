@@ -7,6 +7,7 @@ import {makeObject} from '../functions/functions.js';
 import {path} from '../../helpers.js';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import CategoryCard from '../components/category_card'
 
 
 class BudgetShow extends Component {
@@ -14,10 +15,12 @@ class BudgetShow extends Component {
     super()
     this.state = {
       budget: {},
+      categories: [],
       showForm: false
     }
   }
   
+
   handleShow = () => {
     this.setState({showForm: true})
   }
@@ -36,18 +39,21 @@ class BudgetShow extends Component {
     const url = path + `/budgets/${this.props.location.state.id}/categories`
     fetch(url, object)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => {
+        let categories = this.state.categories
+        categories.push(json)
+        this.setState({categories: categories})
+      })
   }
 
 
   componentDidMount(){
     let id = this.props.location.state.id
-    console.log(id)
     const url = path + `/users/${this.props.userId}/budgets/${id}`
    fetch(url)
      .then(resp=> resp.json())
      .then(json =>
-       this.setState({budget: json})
+       this.setState({budget: json, categories: json.categories})
      )
 
     }
@@ -56,6 +62,9 @@ class BudgetShow extends Component {
       {this.props.signed_in? null: <Redirect to="/" />}
       <DisplayTitle title={this.state.budget.name} />
       <p> This is where the budget will go when I am done with this!</p>
+      <ul>
+        {this.state.categories.map(category => <CategoryCard category= {category} key ={category._id} />)}
+      </ul>
       <Button onClick={this.handleShow}>Add a New Category</Button>
       <Modal show = {this.state.showForm} onHide= {this.handleClose}>
         <Modal.Body>
